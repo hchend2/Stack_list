@@ -43,7 +43,30 @@ void insert(int data) {
 
 }
 
+void printStack() {
+    Node* tmp;
+
+    // Stack is empty...
+    if (top == NULL) {
+        cout << "stack is empty" << endl; //(stack underflow)...
+        exit(1);
+    }
+
+    //stack not empty...
+    tmp = top;
+    while (tmp != NULL) {
+        cout << tmp->data <<endl;
+        tmp = tmp->next;
+    }
+}
+
 int main() {
 
+
+    insert(0);
+    insert(1);
+    insert(2);
+
+    printStack();
     cout << "Hello! StackList " << endl;
 }
