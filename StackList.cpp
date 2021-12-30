@@ -33,16 +33,14 @@ void insert(int data) {
         cout << "stack is full" << endl; //(stack overflow)...
         exit(1);
     }
-
     //stack heap is not full...
     newNode->data = data; // add data to stack...
-
-
-    newNode->next = top;
-    top = newNode;
+    newNode->next = top; // save top into newNode pointing to next node...
+    top = newNode; //make newNode the top of stack...
 
 }
 
+// function to print out the stack...
 void printStack() {
     Node* tmp;
 
@@ -59,14 +57,27 @@ void printStack() {
         tmp = tmp->next;
     }
 }
+// check if stack is empty...
+bool isEmpty() {
+    return top == NULL;
+}
+
+// return top node of stack...
+void topNode() {
+    if (!isEmpty()) {
+        cout<< endl << top->data << endl;
+    } else {
+        exit(1);
+    }
+}
 
 int main() {
-
 
     insert(0);
     insert(1);
     insert(2);
 
     printStack();
+    topNode();
     cout << "Hello! StackList " << endl;
 }
