@@ -22,35 +22,45 @@ class Node {
         }
 };
 
-Node* top; // holds the top of the stack...
+class myStack {
+    Node* top; // holds the top of the stack...
+    public:
+        // by default...
+        myStack() {
+            top = NULL;
+        }
+
+        void insert(int);
+        void printStack();
+        void topNode();
+        bool isEmpty();
+};
 
 // function to insert a node into the stack...
-void insert(int data) {
-    Node* newNode = new Node();
+void myStack::insert(int data) {
 
+    Node* newNode = new Node();
     // stack heap is full...
     if (!newNode) {
-        cout << "stack is full" << endl; //(stack overflow)...
+        cout << "stack is full" << endl; // (stack overflow)...
         exit(1);
     }
     //stack heap is not full...
     newNode->data = data; // add data to stack...
     newNode->next = top; // save top into newNode pointing to next node...
-    top = newNode; //make newNode the top of stack...
-
+    top = newNode; // make newNode the top of stack...
 }
 
 // function to print out the stack...
-void printStack() {
-    Node* tmp;
+void myStack::printStack() {
 
+    Node* tmp;
     // Stack is empty...
     if (top == NULL) {
-        cout << "stack is empty" << endl; //(stack underflow)...
+        cout << "stack is empty" << endl; // (stack underflow)...
         exit(1);
     }
-
-    //stack not empty...
+    // stack not empty...
     tmp = top;
     while (tmp != NULL) {
         cout << tmp->data <<endl;
@@ -58,26 +68,26 @@ void printStack() {
     }
 }
 // check if stack is empty...
-bool isEmpty() {
+bool myStack::isEmpty() {
     return top == NULL;
 }
 
 // return top node of stack...
-void topNode() {
+void myStack::topNode() {
     if (!isEmpty()) {
-        cout<< endl << top->data << endl;
+        cout << endl << top->data << endl;
     } else {
         exit(1);
     }
 }
 
 int main() {
+    myStack stack;
+    stack.insert(0);
+    stack.insert(1);
+    stack.insert(2);
 
-    insert(0);
-    insert(1);
-    insert(2);
-
-    printStack();
-    topNode();
+    stack.printStack();
+    stack.topNode();
     cout << "Hello! StackList " << endl;
 }
