@@ -1,6 +1,7 @@
 #include <iostream>
 
-using namespace std;
+using std::endl;
+using std::cout;
 
 class Node {
     public:
@@ -27,13 +28,14 @@ class myStack {
         // by default...
         myStack() {
             top = NULL;
+            size = 0;
         }
         void insert(int data);
-        void printStack();
         void topNode();
         bool isEmpty();
         void popTopNode();
         int Size() const;
+        void printStack();
 };
 
 // function to insert a node into the stack...
@@ -79,7 +81,7 @@ bool myStack::isEmpty() {
 // return top node of stack...
 void myStack::topNode() {
     if (!isEmpty()) {
-        cout << endl << top->data << endl;
+        cout << top->data << endl;
     } else {
         exit(1);
     }
@@ -96,8 +98,7 @@ void myStack::popTopNode() {
     // stack not empty...
     tmp = top; // save top node into tmp...
     top = top->prev; // sava pointing to next into top...
-    // free memory of top node...
-    delete tmp;
+    delete tmp; // free memory of top node...
     size--; 
 }
 
@@ -110,17 +111,13 @@ int main() {
     stack.insert(3);
     stack.insert(4);
     stack.printStack();
-
-    stack.topNode();
+    cout << "size of stack is: " << stack.Size() << endl;
+    cout << "Top of stack is: "; stack.topNode();
     cout << endl;
     stack.popTopNode();
     stack.popTopNode();
     stack.popTopNode();
-
-    stack.topNode();
-    cout << endl;
-    cout << "check" << endl;
     stack.printStack();
-    
-    cout << "Hello! StackList " << endl;
+    cout << "New top of stack is: "; stack.topNode();
+    cout << "New size of stack is: " << stack.Size() << endl;
 }
